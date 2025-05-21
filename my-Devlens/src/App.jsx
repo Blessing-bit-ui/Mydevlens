@@ -22,7 +22,6 @@ function Header(){
       class="w-7"/> 
       </span>
     </div>
-    <h1> Extensions List</h1>
     </div>
   )
 
