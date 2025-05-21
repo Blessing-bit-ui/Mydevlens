@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import extensions from './assets/extensions.avif';
 import css from './assets/css.png';
 import speed from './assets/speed.jpg';
@@ -87,31 +88,25 @@ const ExtensionsList =[
     }
 ]
 
-function handleRemove(index){
-const Extensionss= ExtensionsList
-Extensionss.filter((i)=> i !==index)
-}
-   function ExtensList(){
-return (
-  <div>
-    <Extensions/>
-  </div>
-);
-   }
-   export default ExtensList;
 
-   function Extensions(props){
+   function ExtensList(){
+    const [extensionss, setExtensionss] =useState(ExtensionsList)
+
+    function handleRemove(index) {
+      const updatedList = extensionss.filter((_,i)=>i !==index)
+      setExtensionss(updatedList)
+    }
     return (
       <div class="flex items-center justify-center">
         <div class="flex flex-col md:grid md:grid-cols-4 gap-4 mt-2 md:mr-7 md:ml-7 md:w-full">
-          {ExtensionsList.map((extensions, index) => (
+          {extensionss.map((ext, index) => (
             <div key={index} class="w-[300px] bg-zinc-900 p-3 text-white border rounded-lg">
-                <img src={extensions.photoName}
+                <img src={ext.photoName}
                 class="w-7"
                 />
                 <span>
-                <h1>{extensions.name}</h1>
-              <p>{extensions.use}</p>
+                <h1>{ext.name}</h1>
+              <p>{ext.use}</p>
               </span>
               <button onClick={()=>handleRemove(index)}class="bg-white text-red-600 text-[10px] p-1 border rounded-md">Remove</button>
             </div>
@@ -121,3 +116,4 @@ return (
       </div>
     );
    }
+   export default ExtensList;
