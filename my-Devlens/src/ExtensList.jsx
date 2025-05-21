@@ -96,16 +96,21 @@ return (
    export default ExtensList;
 
    function Extensions(props){
-    return(
-        <div>
-        {ExtensionsList.map((extensions,index)=>(
-            <div key={index}>
-                <img src={extensions.photoName}/>
+    return (
+      <div class="flex items-center justify-center">
+        <div class="flex flex-col md:grid md:grid-cols-4 gap-4 mt-2 ">
+          {ExtensionsList.map((extensions, index) => (
+            <div key={index} class="w-[300px]">
+                <img src={extensions.photoName}
+                class="w-7"
+                />
+                <span>
                 <h1>{extensions.name}</h1>
-            <p>{extensions.use}</p>
+              <p>{extensions.use}</p>
+              </span>
             </div>
-        ))}
-       
-         </div>
-    )
+          ))}
+        </div>
+      </div>
+    );
    }
