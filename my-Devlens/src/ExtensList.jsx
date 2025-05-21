@@ -94,17 +94,15 @@ const ExtensionsList =[
     function handleRemove(index) {
       const updatedList = extensionss.filter((_,i)=>i !==index)
       setExtensionss(updatedList)
-
-      function handleAll(){
-        setExtensionss(extensionss)
-      }
     }
+      function handleAll(){
+        setExtensionss(ExtensionsList)
+      }
+    
     return (
       <div class="flex items-center justify-center">
         <div class="flex flex-col md:grid md:grid-cols-4 gap-4 mt-2 md:mr-7 md:ml-7 md:w-full">
-     <Buttons name="All"/>
-     <Buttons name ="Active" />
-     <Buttons name=" Inactive" />
+         <AllButtons handleAll={handleAll} />
           {extensionss.map((ext, index) => (
             <div key={index} class="w-[300px] bg-zinc-900 p-3 text-white border rounded-lg">
                 <img src={ext.photoName}
@@ -120,13 +118,14 @@ const ExtensionsList =[
         </div>
       </div>
     );
-   }
+}
    export default ExtensList;
 
-   function Buttons(props){
+
+function AllButtons({handleAll}){
     return(
         <div>
-       <button>{props.name}</button>
+            <button onClick={handleAll}>All</button>
         </div>
     )
-   }
+}
