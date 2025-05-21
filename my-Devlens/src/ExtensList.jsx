@@ -12,7 +12,7 @@ import dom from './assets/dom.jpg';
 import console from './assets/console.png'
 import devlens from './assets/devlens.png';
 
-const Extensions =[
+const ExtensionsList =[
     {
         name:"DevLens",
         use: "Quickly inspect page layouts and visualise elements boundaries",
@@ -89,8 +89,23 @@ const Extensions =[
    function ExtensList(){
 return (
   <div>
-    <img src={extensions} alt="extensions" />
+    <Extensions/>
   </div>
 );
    }
    export default ExtensList;
+
+   function Extensions(props){
+    return(
+        <div>
+        {ExtensionsList.map((extensions,index)=>(
+            <div key={index}>
+                <img src={extensions.photoName}/>
+                <h1>{extensions.name}</h1>
+            <p>{extensions.use}</p>
+            </div>
+        ))}
+       
+         </div>
+    )
+   }
