@@ -108,47 +108,70 @@ const ExtensionsList =[
     }
     return (
       <div class="flex items-center justify-center">
-        <div class="flex flex-col md:grid md:grid-cols-4 gap-4 mt-2 md:mr-7 md:ml-7 md:w-full">
-         <AllButtons handleAll={handleAll} />
-         <ActiveButton handleActive={handleActive} />
-         <InactiveButton handleInactive={handleInactive} />
+        <div class="flex flex-col gap-4 mt-2 md:mr-7 md:ml-7 md:w-full ">
+         <div>
+        <span>
+          <ExtensionLists />
+          </span>
+          <span>
+          <AllButtons handleAll={handleAll} />
+          <ActiveButton handleActive={handleActive} />
+          <InactiveButton handleInactive={handleInactive} />
+          </span>
+        </div>
+         <div class=" md:grid md:grid-cols-4 ">
           {extensionss.map((ext, index) => (
-            <div key={index} class="w-[300px] bg-zinc-900 p-3 text-white border rounded-lg">
-                <img src={ext.photoName}
-                class="w-7"
-                />
-                <span>
-               <h1>{ext.name}</h1>
-              <p>{ext.use}</p>
+            <div
+              key={index}
+              class="w-[300px] bg-zinc-900 p-3 text-white border rounded-lg"
+            >
+              <img src={ext.photoName} class="w-7" />
+              <span>
+                <h1>{ext.name}</h1>
+                <p>{ext.use}</p>
               </span>
-              <button onClick={()=>handleRemove(index)}class="bg-white text-red-600 text-[10px] p-1 border rounded-md">Remove</button>
+              <button
+                onClick={() => handleRemove(index)}
+                class="bg-white text-red-600 text-[10px] p-1 border rounded-md"
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>
       </div>
+      </div>
+    
     );
 }
    export default ExtensList;
 
+function ExtensionLists(){
+  return(
+    <div>
+    <h1> Extension Lists</h1>
+    </div>
+  )
+}
 
 function AllButtons({handleAll}){
     return(
-        <div>
-            <button onClick={handleAll}>All</button>
-        </div>
+      <span>
+            <button onClick={handleAll} class="mr-1">All</button>
+            </span>
     )
 }
 function ActiveButton({handleActive}){
   return(
-    <div>
-      <button onClick={handleActive}> Active</button>
-    </div>
+    <span>
+      <button onClick={handleActive} class="mr-1"> Active</button>
+      </span>
   )
 }
 function InactiveButton({handleInactive}){
   return(
-    <div>
+    <span>
       <button onClick={handleInactive}>Inactive</button>
-    </div>
+      </span>
   )
 }
