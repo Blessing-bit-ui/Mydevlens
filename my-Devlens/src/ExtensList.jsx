@@ -99,22 +99,26 @@ const ExtensionsList =[
         setExtensionss(ExtensionsList)
       }
       function handleActive(){
-        return ExtensionsList.status("active")
+        const activeList = extensionss.filter((extension)=>extension.status !== "inactive")
         setExtensionss(activeList)
       }
-    
+    function handleInactive(){
+      const inactiveList= extensionss.filter((extension)=>extension.status !== "active")
+      setExtensionss(inactiveList)
+    }
     return (
       <div class="flex items-center justify-center">
         <div class="flex flex-col md:grid md:grid-cols-4 gap-4 mt-2 md:mr-7 md:ml-7 md:w-full">
          <AllButtons handleAll={handleAll} />
          <ActiveButton handleActive={handleActive} />
+         <InactiveButton handleInactive={handleInactive} />
           {extensionss.map((ext, index) => (
             <div key={index} class="w-[300px] bg-zinc-900 p-3 text-white border rounded-lg">
                 <img src={ext.photoName}
                 class="w-7"
                 />
                 <span>
-                <h1>{ext.name}</h1>
+               <h1>{ext.name}</h1>
               <p>{ext.use}</p>
               </span>
               <button onClick={()=>handleRemove(index)}class="bg-white text-red-600 text-[10px] p-1 border rounded-md">Remove</button>
@@ -138,6 +142,13 @@ function ActiveButton({handleActive}){
   return(
     <div>
       <button onClick={handleActive}> Active</button>
+    </div>
+  )
+}
+function InactiveButton({handleInactive}){
+  return(
+    <div>
+      <button onClick={handleInactive}>Inactive</button>
     </div>
   )
 }
