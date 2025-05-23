@@ -98,11 +98,16 @@ const ExtensionsList =[
       function handleAll(){
         setExtensionss(ExtensionsList)
       }
+      function handleActive(){
+        return ExtensionsList.status("active")
+        setExtensionss(activeList)
+      }
     
     return (
       <div class="flex items-center justify-center">
         <div class="flex flex-col md:grid md:grid-cols-4 gap-4 mt-2 md:mr-7 md:ml-7 md:w-full">
          <AllButtons handleAll={handleAll} />
+         <ActiveButton handleActive={handleActive} />
           {extensionss.map((ext, index) => (
             <div key={index} class="w-[300px] bg-zinc-900 p-3 text-white border rounded-lg">
                 <img src={ext.photoName}
@@ -128,4 +133,11 @@ function AllButtons({handleAll}){
             <button onClick={handleAll}>All</button>
         </div>
     )
+}
+function ActiveButton({handleActive}){
+  return(
+    <div>
+      <button onClick={handleActive}> Active</button>
+    </div>
+  )
 }
