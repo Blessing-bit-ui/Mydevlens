@@ -109,11 +109,9 @@ const ExtensionsList =[
     return (
       <div class="flex items-center justify-center">
         <div class="flex flex-col gap-4 mt-2 md:mr-7 md:ml-7 md:w-full ">
-         <div>
-        <span>
-          <ExtensionLists />
-          </span>
-          <span>
+         <div class=" md:flex  md:justify-between">
+         <ExtensionLists />
+         <span>
           <AllButtons handleAll={handleAll} />
           <ActiveButton handleActive={handleActive} />
           <InactiveButton handleInactive={handleInactive} />
@@ -148,30 +146,27 @@ const ExtensionsList =[
 
 function ExtensionLists(){
   return(
-    <div>
-    <h1> Extension Lists</h1>
-    </div>
+    <h1 class="text-[20px]"> Extension Lists</h1>
   )
 }
 
 function AllButtons({handleAll}){
     return(
-      <span>
-            <button onClick={handleAll} class="mr-1">All</button>
-            </span>
+          <button onClick={handleAll} class="mr-1 bg-black text-white border rounded-md p-2">All</button>
+        
     )
 }
 function ActiveButton({handleActive}){
   return(
-    <span>
-      <button onClick={handleActive} class="mr-1"> Active</button>
-      </span>
+    
+      <button onClick={handleActive} class="mr-1 bg-blue-500 text-white border rounded-md p-2"> Active</button>
+    
   )
 }
 function InactiveButton({handleInactive}){
   return(
-    <span>
-      <button onClick={handleInactive}>Inactive</button>
-      </span>
+    
+      <button onClick={handleInactive} class="bg-red-500 text-white border rounded-md p-1">Inactive</button>
+      
   )
 }
